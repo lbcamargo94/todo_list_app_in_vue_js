@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "commit": "gitmoji -c"
+    "commit": "gitmoji -r"
   },
   "dependencies": {
     "vue": "^3.2.47"
