@@ -7,15 +7,37 @@ const name = ref('')
 const input_content = ref('')
 const input_category = ref(null)
 
-const todos_asc = computed(() => todos.value.sort((a, b) =>
-{
-  return a.createdAt - b.createdAt
+const todos_asc = computed(() => todos.value.sort((first, second) => {
+  return second.createdAt - first.createdAt
 }))
 
-const addTodo = () => { }
+const addTodo = () => {
+  const has_content = input_content.value.trim() === ''
+  const is_null = input_content.value === null
+
+  if (has_content || is_null) {
+    return
+  }
+
+  todos.value.push({
+    content: input_content.value,
+    category: input_category.value,
+    done: false,
+    createdAt: new Date().getTime()
+  })
+}
+
+watch(todos, newValue => {
+  localStorage.setItem('todos', JSON.stringify(newValue))
+}, { deep: true })
 
 watch(name, (newValue) => { localStorage.setItem('name', newValue) })
-onMounted(() => { localStorage.getItem('name') })
+
+onMounted(() => {
+  name.value = localStorage.getItem('name') || ''
+  todos.value = JSON.parse(localStorage.getItem('todos') || [])
+})
+
 </script>
 
 
@@ -37,7 +59,7 @@ onMounted(() => { localStorage.getItem('name') })
         <h4>Pick a category</h4>
 
         <div class="options">
-          <label for="">
+          <label>
             <input type="radio" name="category" value="business" v-model="input_category">
             <span class="bubble business"></span>
             <div>Business</div>
@@ -45,7 +67,7 @@ onMounted(() => { localStorage.getItem('name') })
         </div>
 
         <div class="options">
-          <label for="">
+          <label>
             <input type="radio" name="category" value="personal" v-model="input_category">
             <span class="bubble personal"></span>
             <div>Personal</div>
@@ -55,5 +77,7 @@ onMounted(() => { localStorage.getItem('name') })
         <input type="submit" value="Add todo">
       </form>
     </section>
+
+    {{ todos_asc }}
   </main>
 </template>
