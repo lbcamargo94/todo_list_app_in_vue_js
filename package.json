@@ -9,6 +9,13 @@
     "preview": "vite preview",
     "commit": "gitmoji -c"
   },
+  "gitmoji": {
+    "autoAdd": false,
+    "emojiFormat": "code | emoji",
+    "scopePrompt": false,
+    "messagePrompt": false,
+    "gitmojisUrl": "https://gitmoji.dev/api/gitmojis"
+  },
   "dependencies": {
     "gitmoji-cli": "^8.2.2",
     "vue": "^3.2.47"
