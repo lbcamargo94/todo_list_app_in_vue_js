@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "commit": "gitmoji -c"
+    "commit": "git add . && git status && npx cz",
+    "commit:moji": "gitmoji -c"
   },
   "gitmoji": {
     "autoAdd": false,
@@ -22,6 +23,12 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.1.0",
+    "cz-conventional-changelog": "^3.3.0",
     "vite": "^4.3.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
