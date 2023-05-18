@@ -1,0 +1,34 @@
+{
+  "name": "todo_list_app_in_vue_js",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "commit": "git add . && git status && npx cz",
+    "commit:moji": "gitmoji -c"
+  },
+  "gitmoji": {
+    "autoAdd": false,
+    "emojiFormat": "code | emoji",
+    "scopePrompt": false,
+    "messagePrompt": false,
+    "gitmojisUrl": "https://gitmoji.dev/api/gitmojis"
+  },
+  "dependencies": {
+    "gitmoji-cli": "^8.2.2",
+    "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.1.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "vite": "^4.3.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
